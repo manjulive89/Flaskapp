@@ -58,5 +58,5 @@ docker push 136200979863.dkr.ecr.us-west-2.amazonaws.com/ecs-flask-blog
 
 
 
-Finall you can verify that Container repository is created in AWS and docker image is pushed to Container registry
+Finall you can verify that Container repositor is created in AWS and docker image is pushed to Container registry
 
