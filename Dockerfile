@@ -1,10 +1,17 @@
-FROM centos
+FROM ubuntu:16.04
 
-RUN  yum install -y python-pip \
-      && pip install flask
+RUN apt-get update -y && \
+    apt-get install -y python-pip python-dev
 
-COPY . /
+# We copy just the requirements.txt first to leverage Docker cache
+COPY ./requirements.txt /app/requirements.txt
 
-EXPOSE 8081
+WORKDIR /app
 
-CMD cd / && python blog.py
+RUN pip install -r requirements.txt
+
+COPY . /app
+
+ENTRYPOINT [ "python" ]
+
+CMD [ "blog.py" ]
